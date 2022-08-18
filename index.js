@@ -6,6 +6,9 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
+const { HTMLDoc, ManagerHTML, InternHTML } = require("./src/generateHTMLDoc");
+
+
 
 function initialPrompt() {
     inquirer
@@ -37,20 +40,24 @@ function initialPrompt() {
     },
     ])
     .then((data) => {
-        console.log(data.menu);
+        const ManagerData = new Manager(data.name, data.id, data.email, data.officeNumber);
+        ManagerHTML(ManagerData);
+        // console.log(data.menu);
         if (data.menu == "Add a Engineer") {
             console.log("Please enter Engineers info...");
-            addTheEngineer();
+            addTheEngineer(ManagerData);
         } else if (data.menu == "Add a Intern") {
             console.log("add interns info..");
-            addTheIntern();
+            addTheIntern(ManagerData);
         } else {
-            return false;
+            fs.writeFile("index.html", HTMLDoc(ManagerData), (err) =>
+              err ? console.log(err) : console.log('Success!')
+            );
         }
     });
 }
 
-function addTheEngineer() {
+function addTheEngineer(ManagerData, EngineerData, InternData) {
     inquirer
     .prompt([{
         type: "input",
@@ -80,21 +87,25 @@ function addTheEngineer() {
     },
     ])
     .then((data) => {
+        const EngineerData = new Engineer(data.name, data.id, data.email, data.github);
+        ManagerHTML(ManagerData, EngineerData);
         if (data.menu == "Add another Engineer") {
             console.log("Please enter Engineers info...");
-            addTheEngineer();
+            addTheEngineer(ManagerData, EngineerData, InternData);
         } 
         else if (data.menu == "Add another Intern") {
             console.log("add interns info..");
-            addTheIntern();
+            addTheIntern(ManagerData, EngineerData, InternData);
         } 
         else {
-            return false;
+            fs.writeFile("index.html", HTMLDoc(ManagerData, EngineerData, InternData), (err) =>
+              err ? console.log(err) : console.log('Success!')
+            );
         }
     });
 }
 
-function addTheIntern() {
+function addTheIntern(ManagerData, EngineerData, InternData) {
     inquirer
     .prompt([{
         type: "input",
@@ -124,16 +135,20 @@ function addTheIntern() {
     },
     ])
     .then((data) => {
+        const InternData = new Intern(data.name, data.id, data.email, data.school);
+        ManagerHTML(ManagerData, EngineerData, InternData);
         if (data.menu == "Add another Engineer") {
             console.log("Please enter Engineers info...");
-            addTheEngineer();
+            addTheEngineer(ManagerData, EngineerData, InternData);
         } 
         else if (data.menu == "Add another Intern") {
             console.log("add interns info..");
-            addTheIntern();
+            addTheIntern(ManagerData, EngineerData, InternData);
         } 
         else {
-            return false;
+            fs.writeFile("index.html", HTMLDoc(ManagerData, EngineerData, InternData), (err) =>
+              err ? console.log(err) : console.log('Success!')
+            );
         }
     });
 }
