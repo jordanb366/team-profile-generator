@@ -37,12 +37,13 @@ function initialPrompt() {
     },
     ])
     .then((data) => {
+        console.log(data.menu);
         if (data.menu == "Add a Engineer") {
             console.log("Please enter Engineers info...");
-            addTheEngineer(data);
+            addTheEngineer();
         } else if (data.menu == "Add a Intern") {
             console.log("add interns info..");
-            addTheIntern(data);
+            addTheIntern();
         } else {
             return false;
         }
@@ -73,19 +74,21 @@ function addTheEngineer() {
     },
     {
         type: "list",
-        name: "menu2",
+        name: "menu",
         message: "Would like to coninue building your team? or are you finished building?",
         choices: ["Add another Engineer", "Add another Intern", "Done"],
     },
     ])
     .then((data) => {
-        if (data.menu == "Add a Engineer") {
+        if (data.menu == "Add another Engineer") {
             console.log("Please enter Engineers info...");
             addTheEngineer();
-        } else if (data.menu == "Add a Intern") {
+        } 
+        else if (data.menu == "Add another Intern") {
             console.log("add interns info..");
             addTheIntern();
-        } else {
+        } 
+        else {
             return false;
         }
     });
@@ -121,14 +124,15 @@ function addTheIntern() {
     },
     ])
     .then((data) => {
-        console.log(data.menu)
-        if (data.menu == "Add a Engineer") {
+        if (data.menu == "Add another Engineer") {
             console.log("Please enter Engineers info...");
-            addTheEngineer(data);
-        } else if (data.menu == "Add a Intern") {
+            addTheEngineer();
+        } 
+        else if (data.menu == "Add another Intern") {
             console.log("add interns info..");
-            addTheIntern(data);
-        } else {
+            addTheIntern();
+        } 
+        else {
             return false;
         }
     });
