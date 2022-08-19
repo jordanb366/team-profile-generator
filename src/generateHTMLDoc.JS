@@ -1,6 +1,11 @@
+// Arrays that will store the formatting for Manager, Engineer and Intern
+const ManagerArr = [];
+const EngineerArr = [];
+const InternArr = [];
 
+// Function that takes data from the First prompt and formats and then pushes to the array
 function ManagerHTML(Manager){
-    return `<div>
+    return ManagerArr.push(`<div>
     <div>
         <h3>${Manager.getName()}</h3>
         <h4>${Manager.getRole()}</h4>
@@ -10,16 +15,16 @@ function ManagerHTML(Manager){
         <p>Email: <a href="mailto:${Manager.getEmail()}">${Manager.getEmail()}</a></p>
         <p>Office number: ${Manager.getOfficeNumber()}</p>
     </div>
-</div>`
+</div>`);
 }
 
-
+// Function that takes data from the Engineer prompt and then pushes to the array
 function EngineerHTML(Engineer){
     if (!Engineer) {
         return "";
     }
     else {
-        return `<div>
+        return EngineerArr.push(`<div>
         <div>
             <h3>${Engineer.getName()}</h3>
             <h4>${Engineer.getRole()}</h4>
@@ -29,16 +34,17 @@ function EngineerHTML(Engineer){
             <p>Email: <a href="mailto:${Engineer.getEmail()}">${Engineer.getEmail()}</a></p>
             <p>Github: <a href="https://github.com/${Engineer.getGithub()}">${Engineer.getGithub()}</a></p>
         </div>
-    </div>`;
+    </div>`);
     } 
 }
 
+// Function that takes data from Intern prompt and then pushes to the array
 function InternHTML(Intern){
     if (!Intern) {
         return "";
     }
     else {
-        return `<div>
+        return InternArr.push(`<div>
         <div>
             <h3>${Intern.getName()}</h3>
             <h4>${Intern.getRole()}</h4>
@@ -48,12 +54,13 @@ function InternHTML(Intern){
             <p>Email: <a href="mailto:${Intern.getEmail()}">${Intern.getEmail()}</a></p>
             <p>Scool: ${Intern.getSchool()}</p>
         </div>
-    </div>`;
+    </div>`);
     } 
 }
 
+// Function that formats the entired HTML and calls each array for each prompt
 function HTMLDoc(Manager, EngineerData, InternData) {
-    return`
+    return `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -68,9 +75,9 @@ function HTMLDoc(Manager, EngineerData, InternData) {
         <h1>My Team</h1>
     </section>
     <section class="bg-light">
-        ${ManagerHTML(Manager)}
-        ${EngineerHTML(EngineerData)}
-        ${InternHTML(InternData)}
+        ${ManagerArr.join("\n")}
+        ${EngineerArr.join("\n")}
+        ${InternArr.join("\n")}
         
     </section>
       
@@ -83,4 +90,5 @@ function HTMLDoc(Manager, EngineerData, InternData) {
             
 } 
 
+// Exported functions
 module.exports = {HTMLDoc, ManagerHTML, EngineerHTML, InternHTML};

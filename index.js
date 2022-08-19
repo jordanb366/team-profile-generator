@@ -1,15 +1,18 @@
+// Imports all the classes from "lib"folder
 const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
+// Imports and requires Inquire for the prompts an fs for file write system
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-const { HTMLDoc, ManagerHTML, InternHTML } = require("./src/generateHTMLDoc");
+// Imports the functions from src that help build the HTML file
+const { HTMLDoc, ManagerHTML, InternHTML, EngineerHTML } = require("./src/generateHTMLDoc");
 
 
-
+// First prompt for manager
 function initialPrompt() {
     inquirer
     .prompt([{
@@ -57,6 +60,7 @@ function initialPrompt() {
     });
 }
 
+// Second prompt for Engineer
 function addTheEngineer(ManagerData, EngineerData, InternData) {
     inquirer
     .prompt([{
@@ -88,7 +92,7 @@ function addTheEngineer(ManagerData, EngineerData, InternData) {
     ])
     .then((data) => {
         const EngineerData = new Engineer(data.name, data.id, data.email, data.github);
-        ManagerHTML(ManagerData, EngineerData);
+        EngineerHTML(EngineerData);
         if (data.menu == "Add another Engineer") {
             console.log("Please enter Engineers info...");
             addTheEngineer(ManagerData, EngineerData, InternData);
@@ -105,6 +109,7 @@ function addTheEngineer(ManagerData, EngineerData, InternData) {
     });
 }
 
+// Third prompt for Intern
 function addTheIntern(ManagerData, EngineerData, InternData) {
     inquirer
     .prompt([{
@@ -136,7 +141,7 @@ function addTheIntern(ManagerData, EngineerData, InternData) {
     ])
     .then((data) => {
         const InternData = new Intern(data.name, data.id, data.email, data.school);
-        ManagerHTML(ManagerData, EngineerData, InternData);
+        InternHTML(InternData);
         if (data.menu == "Add another Engineer") {
             console.log("Please enter Engineers info...");
             addTheEngineer(ManagerData, EngineerData, InternData);
@@ -153,7 +158,7 @@ function addTheIntern(ManagerData, EngineerData, InternData) {
     });
 }
 
-
+// Function to call initial prompt when app is started
 function init() {
     initialPrompt();
 }
