@@ -5,10 +5,10 @@ const InternArr = [];
 
 // Function that takes data from the First prompt and formats and then pushes to the array
 function ManagerHTML(Manager) {
-  return ManagerArr.push(`<div>
-    <div>
-        <h3>${Manager.getName()}</h3>
-        <h4>${Manager.getRole()}</h4>
+  return ManagerArr.push(`<div class="card border border-success m-3 p-3  col-3">
+    <div class="card border border-success">
+        <h3 class="card-title">${Manager.getName()}</h3>
+        <h4 class="card-subtitle">${Manager.getRole()}</h4>
     </div>
     <div>
         <p>ID: ${Manager.getId()} </p>
@@ -23,10 +23,10 @@ function EngineerHTML(Engineer) {
   if (!Engineer) {
     return "";
   } else {
-    return EngineerArr.push(`<div>
-        <div>
-            <h3>${Engineer.getName()}</h3>
-            <h4>${Engineer.getRole()}</h4>
+    return EngineerArr.push(`<div class="card border border-success m-3 p-3  col-3">
+        <div class="card border border-success">
+            <h3 class="card-title">${Engineer.getName()}</h3>
+            <h4 class="card-subtitle">${Engineer.getRole()}</h4>
         </div>
         <div>
             <p>ID: ${Engineer.getId()} </p>
@@ -42,10 +42,10 @@ function InternHTML(Intern) {
   if (!Intern) {
     return "";
   } else {
-    return InternArr.push(`<div>
-        <div>
-            <h3>${Intern.getName()}</h3>
-            <h4>${Intern.getRole()}</h4>
+    return InternArr.push(`<div class="card border border-success m-3 p-3  col-3">
+        <div class="card border border-success">
+            <h3 class="card-title">${Intern.getName()}</h3>
+            <h4 class="card-subtitle">${Intern.getRole()}</h4>
         </div>
         <div>
             <p>ID: ${Intern.getId()} </p>
@@ -72,7 +72,7 @@ function HTMLDoc(Manager, EngineerData, InternData) {
     <section class="bg-primary">
         <h1>My Team</h1>
     </section>
-    <section class="bg-light">
+    <section class="bg-light card-group justify-content-center">
         ${ManagerArr.join("\n")}
         ${EngineerArr.join("\n")}
         ${InternArr.join("\n")}

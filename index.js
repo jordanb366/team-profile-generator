@@ -53,7 +53,7 @@ function initialPrompt() {
             console.log("add interns info..");
             addTheIntern(ManagerData);
         } else {
-            fs.writeFile("index.html", HTMLDoc(ManagerData), (err) =>
+            fs.writeFile("./dist/index.html", HTMLDoc(ManagerData), (err) =>
               err ? console.log(err) : console.log('Success!')
             );
         }
@@ -102,7 +102,7 @@ function addTheEngineer(ManagerData, EngineerData, InternData) {
             addTheIntern(ManagerData, EngineerData, InternData);
         } 
         else {
-            fs.writeFile("index.html", HTMLDoc(ManagerData, EngineerData, InternData), (err) =>
+            fs.writeFile("./dist/index.html", HTMLDoc(ManagerData, EngineerData, InternData), (err) =>
               err ? console.log(err) : console.log('Success!')
             );
         }
@@ -151,7 +151,7 @@ function addTheIntern(ManagerData, EngineerData, InternData) {
             addTheIntern(ManagerData, EngineerData, InternData);
         } 
         else {
-            fs.writeFile("index.html", HTMLDoc(ManagerData, EngineerData, InternData), (err) =>
+            fs.writeFile("./dist/index.html", HTMLDoc(ManagerData, EngineerData, InternData), (err) =>
               err ? console.log(err) : console.log('Success!')
             );
         }
