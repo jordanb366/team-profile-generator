@@ -4,8 +4,8 @@ const EngineerArr = [];
 const InternArr = [];
 
 // Function that takes data from the First prompt and formats and then pushes to the array
-function ManagerHTML(Manager){
-    return ManagerArr.push(`<div>
+function ManagerHTML(Manager) {
+  return ManagerArr.push(`<div>
     <div>
         <h3>${Manager.getName()}</h3>
         <h4>${Manager.getRole()}</h4>
@@ -19,12 +19,11 @@ function ManagerHTML(Manager){
 }
 
 // Function that takes data from the Engineer prompt and then pushes to the array
-function EngineerHTML(Engineer){
-    if (!Engineer) {
-        return "";
-    }
-    else {
-        return EngineerArr.push(`<div>
+function EngineerHTML(Engineer) {
+  if (!Engineer) {
+    return "";
+  } else {
+    return EngineerArr.push(`<div>
         <div>
             <h3>${Engineer.getName()}</h3>
             <h4>${Engineer.getRole()}</h4>
@@ -35,16 +34,15 @@ function EngineerHTML(Engineer){
             <p>Github: <a href="https://github.com/${Engineer.getGithub()}">${Engineer.getGithub()}</a></p>
         </div>
     </div>`);
-    } 
+  }
 }
 
 // Function that takes data from Intern prompt and then pushes to the array
-function InternHTML(Intern){
-    if (!Intern) {
-        return "";
-    }
-    else {
-        return InternArr.push(`<div>
+function InternHTML(Intern) {
+  if (!Intern) {
+    return "";
+  } else {
+    return InternArr.push(`<div>
         <div>
             <h3>${Intern.getName()}</h3>
             <h4>${Intern.getRole()}</h4>
@@ -55,12 +53,12 @@ function InternHTML(Intern){
             <p>Scool: ${Intern.getSchool()}</p>
         </div>
     </div>`);
-    } 
+  }
 }
 
 // Function that formats the entired HTML and calls each array for each prompt
 function HTMLDoc(Manager, EngineerData, InternData) {
-    return `
+  return `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -86,9 +84,7 @@ function HTMLDoc(Manager, EngineerData, InternData) {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
     </html>`;
-    
-            
-} 
+}
 
 // Exported functions
-module.exports = {HTMLDoc, ManagerHTML, EngineerHTML, InternHTML};
+module.exports = { HTMLDoc, ManagerHTML, EngineerHTML, InternHTML };
