@@ -2,12 +2,13 @@ const Manager = require("../lib/Manager");
 
 describe("Manager class", () => {
   describe("getOfficeNumber, method", () => {
-    it("There should be a school name", () => {
-      const officeNumber = "1";
-
-      const result = new Manager("Bob", "1", "email", officeNumber);
-      result.getOfficeNumber(officeNumber);
-      expect(result.officeNumber).toBe("1");
+    it("name, id, email, office number", () => {
+      const result = new Manager("Bob", 2, "test@gmail.com", 4);
+  
+      expect(result.name).toBe("Bob");
+      expect(result.id).toBe(2);
+      expect(result.email).toBe("test@gmail.com");
+      expect(result.officeNumber).toBe(4);
     });
   });
 });
