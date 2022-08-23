@@ -49,14 +49,17 @@ function initialPrompt() {
       },
     ])
     .then((data) => {
+      // Gets the data from prompts to Manager class
       const ManagerData = new Manager(
         data.name,
         data.id,
         data.email,
         data.officeNumber
       );
+      //   Gets the data to ManagerHTML function
       ManagerHTML(ManagerData);
-      // console.log(data.menu);
+
+      //   Conditionals statements for the prompts menu
       if (data.menu == "Add a Engineer") {
         console.log("Please enter Engineers info...");
         addTheEngineer(ManagerData);
@@ -104,13 +107,16 @@ function addTheEngineer(ManagerData, EngineerData, InternData) {
       },
     ])
     .then((data) => {
+      // Gets data to the Engineer class
       const EngineerData = new Engineer(
         data.name,
         data.id,
         data.email,
         data.github
       );
+      //   Gets the data to the EngineerHTML function
       EngineerHTML(EngineerData);
+      //   Conditionals statements for the prompts menu
       if (data.menu == "Add another Engineer") {
         console.log("Please enter Engineers info...");
         addTheEngineer(ManagerData, EngineerData, InternData);
@@ -160,13 +166,16 @@ function addTheIntern(ManagerData, EngineerData, InternData) {
       },
     ])
     .then((data) => {
+      // Gets the data to the Intern class
       const InternData = new Intern(
         data.name,
         data.id,
         data.email,
         data.school
       );
+      //   Gets the data to the InternHTML class
       InternHTML(InternData);
+      //   Conditionals statements for the prompts menu
       if (data.menu == "Add another Engineer") {
         console.log("Please enter Engineers info...");
         addTheEngineer(ManagerData, EngineerData, InternData);
