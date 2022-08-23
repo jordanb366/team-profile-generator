@@ -8,7 +8,7 @@ This is an app that allows the user to generate a team profile by answering the 
 
 ## Link to Demonstration of App
 
-[Link to Demo of App](google.com)
+[Link to Demo of App](https://drive.google.com/file/d/1k4_LcRmWaLBWJYtvR8TvOYVe-so-6QXp/view)
 
 ## Screenshots of App
 
@@ -18,4 +18,4 @@ This is an app that allows the user to generate a team profile by answering the 
 
 ## Link to sample HTML file
 
-[Link to Demo of App](google.com)
+[Link to sample HTML file](https://github.com/jordanb366/team-profile-generator/blob/main/sample/index.html)
